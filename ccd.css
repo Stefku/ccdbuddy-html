@@ -8,6 +8,7 @@
 }
 
 .ui-header .ui-title {
-	margin-left: 0;
+	margin-left: 10px;
 	margin-right: 5em;
+	text-align: left;
 }

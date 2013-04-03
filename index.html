@@ -13,41 +13,48 @@
 
 <div class="box" data-role="page" id="grade">
 	<div data-role="header">
-		<h1>{{currentGrade.toUpperCase()}} day {{currentDay}}</h1>
-		<a href="#settings" class="ui-btn-right">Options</a>
+		<h1>{{translate('grade.'+currentGrade).toUpperCase()}} {{translate('label.day')}} {{currentDay}}</h1>
+		<a href="#settings" class="ui-btn-right">{{translate('label.options')}}</a>
 	</div>
 	<div data-role="content" class="panel" style="background-color: {{grades[currentGrade].htmlColor}}">
 		<div data-role="collapsible" data-collapsed="false">
-			<h3>Principles</h3>
+			<h3>{{translate('label.principles')}}</h3>
 			<fieldset data-role="controlgroup">
 				<span ng-repeat="principle in grades[currentGrade].principles">
 					<input type="checkbox" ng-model="selected[principle.id]" name="principle.text" id="principle.id">
-					<label for="principle.id">{{principle.text}}</label>
+					<label for="principle.id">{{translate(principle.text)}}</label>
 				</span>
 			</fieldset>
 		</div>
 		<div data-role="collapsible" data-collapsed="false">
-			<h3>Practices</h3>
+			<h3>{{translate('label.practices')}}</h3>
 			<fieldset data-role="controlgroup">
 				<span ng-repeat="practice in grades[currentGrade].practices">
 					<input type="checkbox" ng-model="selected[practice.id]" name="practice.text" id="practice.id">
-					<label for="practice.id">{{practice.text}}</label>
+					<label for="practice.id">{{translate(practice.text)}}</label>
 				</span>
 			</fieldset>
 		</div>
-		<input type="button" ng-click="evaluate()" value="submit"/>
+		<input type="button" ng-click="evaluate()" value="{{translate('label.submit')}}"/>
 	</div>
 </div>
 
 <div class="box" data-role="page" id="settings">
 	<div data-role="header">
-		<h1>Settings</h1>
-		<a href="#grade" class="ui-btn-right" ng-click="saveConfig()">Back</a>
+		<h1>{{translate('label.options')}}</h1>
+		<a href="#grade" class="ui-btn-right" ng-click="saveConfig()">{{translate('label.back')}}</a>
 	</div>
 	<div data-role="content">
-		<label for="daysPerGrade">Days per grade</label>
+		<label for="daysPerGrade">{{translate('label.daysPerGrade')}}</label>
 		<input type="number" data-clear-btn="true" name="daysPerGrade" id="daysPerGrade" ng-model="config.daysPerGrade">
 	</div>
+	<fieldset data-role="controlgroup">
+		<legend>{{translate('label.language')}}</legend>
+		<label for="langDe">Deutsch</label>
+		<input ng-model="config.language" value="de" type="radio" name="language" id="langDe">
+		<label for="langEn">English</label>
+		<input ng-model="config.language" value="en" type="radio" name="language" id="langEn">
+	</fieldset>
 </div>
 </body>
 </html>

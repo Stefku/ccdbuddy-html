@@ -3,6 +3,7 @@ function CCDCtrl($scope, ccdStorage ) {
     $scope.currentGrade = ccdStorage.loadCurrentGrade();
     $scope.currentDay = ccdStorage.loadCurrentDay();
     $scope.config.daysPerGrade = ccdStorage.loadDaysPerGrade();
+    $scope.config.language = ccdStorage.loadLanguage();
 
     $scope.selected = {};
 
@@ -44,6 +45,10 @@ function CCDCtrl($scope, ccdStorage ) {
 
     $scope.saveConfig = function () {
         ccdStorage.saveConfig($scope.config);
+    };
+
+    $scope.translate = function (msgKey) {
+        return $scope.translations[$scope.config.language][msgKey];
     };
 
     var toast = function(msg){

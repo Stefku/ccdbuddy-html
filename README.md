@@ -7,7 +7,7 @@ The application counts the days in which you fullfilled all principles and pract
 application proceeds to the next grade.
 
 
-It's a standalone angularjs and jquery mobile application using browser's local storage for settings.
+It's a standalone angularjs and jquery mobile application using browser's local storage for persistence settings and state.
 
 Install
 =======
