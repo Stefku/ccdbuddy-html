@@ -23,12 +23,15 @@ function CCDCtrl($scope, ccdStorage ) {
             if ($scope.currentDay > $scope.config.daysPerGrade) {
                 $scope.currentDay = 1;
                 gotoNextGrade();
+                window.scrollTo(0, 0);
                 toast('Get started for the next grade!');
             } else {
+                window.scrollTo(0, 0);
                 toast('Good work and continue on the next day');
             }
         } else {
             $scope.currentDay = 1;
+            window.scrollTo(0, 0);
             toast('Don\'t get all, try again!');
         }
         $scope.selected = {};
