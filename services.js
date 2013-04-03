@@ -1,10 +1,10 @@
 var app = angular.module('CCDModule', []);
 app.run(function ($rootScope) {
     $rootScope.config = {
-        "daysPerGrade": 3,
         "defaults": {
             "grade": "red",
-            "day": 1
+            "day": 1,
+            "daysPerGrade": 15
         }
     };
 
@@ -121,17 +121,24 @@ app.factory('ccdStorage', function ($rootScope) {
     }
 
     function localStorageHasSavedStats() {
-        return !(localStorage["ccd.current.grade"] === undefined || localStorage["ccd.current.day"] === undefined);
+        return !(localStorage["ccd.current.grade"] === undefined
+            || localStorage["ccd.current.day"] === undefined
+            || localStorage["ccd.config.daysPerGrade"] === undefined);
     }
 
     if (!localStorageHasSavedStats()) {
         localStorage["ccd.current.grade"] = $rootScope.config.defaults.grade;
         localStorage["ccd.current.day"] = $rootScope.config.defaults.day;
+        localStorage["ccd.config.daysPerGrade"] = $rootScope.config.defaults.daysPerGrade;
     }
 
     sharedService.store = function (currentGrade, currentDay) {
         localStorage["ccd.current.grade"] = currentGrade;
         localStorage["ccd.current.day"] = currentDay;
+    };
+
+    sharedService.saveConfig = function (config) {
+        localStorage["ccd.config.daysPerGrade"] = config.daysPerGrade;
     };
 
     sharedService.loadCurrentGrade = function () {
@@ -148,6 +155,14 @@ app.factory('ccdStorage', function ($rootScope) {
             alert("Error: Current day is not in local storage!")
         }
         return parseInt(currentDay, 10);
+    };
+
+    sharedService.loadDaysPerGrade = function () {
+        var daysPerGrade = localStorage["ccd.config.daysPerGrade"];
+        if (daysPerGrade === undefined) {
+            alert("Error: Days per grade is not in local storage!")
+        }
+        return parseInt(daysPerGrade, 10);
     };
 
     return sharedService;

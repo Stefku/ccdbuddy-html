@@ -5,10 +5,8 @@
 
 .panel {
 	font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;
-	background-color: #d3d3d3;
+	/*background-color: #d3d3d3;*/
 	padding: 10px 10px 10px 10px;
-	/*border-left: 3px solid black;*/
-	/*border-right: 3px solid black;*/
 }
 
 .panel h2{

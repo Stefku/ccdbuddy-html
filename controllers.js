@@ -2,6 +2,7 @@ function CCDCtrl($scope, ccdStorage ) {
 
     $scope.currentGrade = ccdStorage.loadCurrentGrade();
     $scope.currentDay = ccdStorage.loadCurrentDay();
+    $scope.config.daysPerGrade = ccdStorage.loadDaysPerGrade();
 
     $scope.selected = {};
 
@@ -36,6 +37,10 @@ function CCDCtrl($scope, ccdStorage ) {
 
     var gotoNextGrade = function () {
         $scope.currentGrade = $scope.grades[$scope.currentGrade].next;
+    };
+
+    $scope.saveConfig = function () {
+        ccdStorage.saveConfig($scope.config);
     };
 
     var toast = function(msg){

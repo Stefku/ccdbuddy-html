@@ -11,11 +11,12 @@
 </head>
 <body ng-controller="CCDCtrl">
 
-<div class="box" data-role="page">
-	<div class="gradeColor" style="background-color: {{grades[currentGrade].htmlColor}}"></div>
-	<div data-role="content" class="panel">
-		<h2>{{currentGrade}} in day {{currentDay}}</h2>
-
+<div class="box" data-role="page" id="grade">
+	<div data-role="header">
+		<h1>Grade {{currentGrade.toUpperCase()}} in day {{currentDay}}</h1>
+		<a href="#settings" class="ui-btn-right">Options</a>
+	</div>
+	<div data-role="content" class="panel" style="background-color: {{grades[currentGrade].htmlColor}}">
 		<div data-role="collapsible" data-collapsed="false">
 			<h3>Principles</h3>
 			<fieldset data-role="controlgroup">
@@ -35,6 +36,17 @@
 			</fieldset>
 		</div>
 		<input type="button" ng-click="evaluate()" value="evaluate"/>
+	</div>
+</div>
+
+<div class="box" data-role="page" id="settings">
+	<div data-role="header">
+		<h1>Settings</h1>
+		<a href="#grade" class="ui-btn-right" ng-click="saveConfig()">Back</a>
+	</div>
+	<div data-role="content">
+		<label for="daysPerGrade">Days per grade</label>
+		<input type="number" data-clear-btn="true" name="daysPerGrade" id="daysPerGrade" ng-model="config.daysPerGrade">
 	</div>
 </div>
 </body>
