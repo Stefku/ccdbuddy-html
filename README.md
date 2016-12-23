@@ -6,6 +6,7 @@ At the end of a day you can go through the principles and practices of the curre
 The application counts the days in which you fullfilled all principles and practices. If sufficient days are past then the 
 application proceeds to the next grade.
 
+[http://stefku.github.io/ccdbuddy-html/](http://stefku.github.io/ccdbuddy-html/)
 
 It's a standalone angularjs and jquery mobile application using browser's local storage for persistence settings and state.
 
